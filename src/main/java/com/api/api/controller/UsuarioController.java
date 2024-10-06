@@ -12,17 +12,12 @@ import java.util.List;
 @NoArgsConstructor
 @RestController
 public class UsuarioController {
-
+    /** + enter
+     *
+     */
     @Autowired
     private IUsuarioService usuarioService;
 
-/** + enter
- *
- * Consultar => GET
- * Guardar => POST
- * Actualizar => PUT(*) / PATCH
- * Eliminar => DELETE
- */
     @GetMapping("/usuarios")
     public List<Usuario> findAll(){
         return usuarioService.findAll();
