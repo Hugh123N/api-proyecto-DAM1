@@ -44,5 +44,9 @@ public class UsuarioController {
     public Usuario findByEmail(@RequestParam String email,@RequestParam String password){
         return usuarioService.findByEmailAndPassword(email,password);
     }
+    @GetMapping("/login/{email}")
+    public Usuario findByEmail(@PathVariable String email){
+        return usuarioService.findByEmail(email);
+    }
 
 }

@@ -17,4 +17,5 @@ public interface IUsuarioService {
     void delete(Integer id);
     //inicio sesion con correo
     Usuario findByEmailAndPassword(String email, String password);
+    Usuario findByEmail(String email);
 }
