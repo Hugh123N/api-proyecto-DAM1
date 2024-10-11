@@ -38,5 +38,11 @@ public class UsuarioController {
     public void delete(@PathVariable Integer id){
         usuarioService.delete(id);
     }
+    //INICIO SESION requestParam es para que los variables suban automaticamente a la sentencia
+    //  -->  /login?email=dato&password=dato
+    @GetMapping("/login")
+    public Usuario findByEmail(@RequestParam String email,@RequestParam String password){
+        return usuarioService.findByEmailAndPassword(email,password);
+    }
 
 }

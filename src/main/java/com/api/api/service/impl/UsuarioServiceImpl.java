@@ -50,4 +50,11 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public void delete(Integer id) {
         usuarioRepository.deleteById(id);
     }
+    //inicio de sesion con email
+    @Override
+    public Usuario findByEmailAndPassword(String email, String password) {
+        return usuarioRepository.findByEmailAndPassword(email,password).orElseThrow(ResolutionException::new);
+    }
+
+
 }

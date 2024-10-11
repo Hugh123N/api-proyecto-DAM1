@@ -15,4 +15,6 @@ public interface IUsuarioService {
     Usuario update(UsuarioDTO usuario, Integer id);
     //delete
     void delete(Integer id);
+    //inicio sesion con correo
+    Usuario findByEmailAndPassword(String email, String password);
 }
