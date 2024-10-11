@@ -1,6 +1,7 @@
 package com.api.api.service.impl;
 
 import com.api.api.dto.UsuarioDTO;
+import com.api.api.exeption.ResourceNotExeption;
 import com.api.api.model.Usuario;
 import com.api.api.repository.IUsuarioRepository;
 import com.api.api.service.IUsuarioService;
@@ -53,24 +54,18 @@ public class UsuarioServiceImpl implements IUsuarioService {
     //inicio de sesion con email
     @Override
     public Usuario findByEmailAndPassword(String email, String password) {
-        Usuario usuario=new Usuario();
-        Optional<Usuario> usuOptional=usuarioRepository.findByEmailAndPassword(email,password);
-        if(usuOptional.isPresent())
-               usuario=usuOptional.get();
-        else
-             System.out.println("Usuario no encontrado");
-        return usuario;
+        Usuario usuario=usuarioRepository.findByEmailAndPassword(email,password).orElseThrow(ResourceNotExeption::new);
+        if(usuario!=null && usuario.getPassword().equals(password))
+               return usuario;
+        return null;
 
     }
     @Override
     public Usuario findByEmail(String email) {
-        Usuario usuario=new Usuario();
-        Optional<Usuario> usuOptional=usuarioRepository.findByEmail(email);
-        if(usuOptional.isPresent())
-            usuario=usuOptional.get();
-        else
-            System.out.println("Usuario no encontrado");
-        return usuario;
+        Usuario usuario=usuarioRepository.findByEmail(email).orElseThrow(ResolutionException::new);
+        if(usuario!=null && usuario.getEmail().equals(email))
+            return usuario;
+        return null;
     }
 
 
