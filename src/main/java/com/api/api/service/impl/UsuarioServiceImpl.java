@@ -53,7 +53,14 @@ public class UsuarioServiceImpl implements IUsuarioService {
     //inicio de sesion con email
     @Override
     public Usuario findByEmailAndPassword(String email, String password) {
-        return usuarioRepository.findByEmailAndPassword(email,password).orElseThrow(ResolutionException::new);
+        Usuario usuario=new Usuario();
+        Optional<Usuario> usuOptional=usuarioRepository.findByEmailAndPassword(email,password);
+        if(usuOptional.isPresent())
+               usuario=usuOptional.get();
+        else
+             System.out.println("Usuario no encontrado");
+        return usuario;
+
     }
 
 
