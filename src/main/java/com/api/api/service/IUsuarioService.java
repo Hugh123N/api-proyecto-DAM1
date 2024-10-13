@@ -4,6 +4,7 @@ import com.api.api.dto.UsuarioDTO;
 import com.api.api.model.Usuario;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IUsuarioService {
     //GET
@@ -17,5 +18,5 @@ public interface IUsuarioService {
     void delete(Integer id);
     //inicio sesion con correo
     Usuario findByEmailAndPassword(String email, String password);
-    Usuario findByEmail(String email);
+    Optional<Usuario> findByEmail(String email);
 }

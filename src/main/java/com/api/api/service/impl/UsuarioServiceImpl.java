@@ -51,7 +51,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public void delete(Integer id) {
         usuarioRepository.deleteById(id);
     }
-    //inicio de sesion con email
+    //inicio de sesion con email******************
     @Override
     public Usuario findByEmailAndPassword(String email, String password) {
         Usuario usuario=usuarioRepository.findByEmailAndPassword(email,password).orElseThrow(ResourceNotExeption::new);
@@ -61,11 +61,10 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
     }
     @Override
-    public Usuario findByEmail(String email) {
-        Usuario usuario=usuarioRepository.findByEmail(email).orElseThrow(ResolutionException::new);
-        if(usuario!=null && usuario.getEmail().equals(email))
-            return usuario;
-        return null;
+    public Optional<Usuario> findByEmail(String email) {
+        //Usuario usuario=usuarioRepository.findByEmail(email).orElseThrow(ResolutionException::new);
+        //if(usuario!=null && usuario.getEmail().equals(email))
+        return usuarioRepository.findByEmail(email);
     }
 
 

@@ -5,9 +5,11 @@ import com.api.api.model.Usuario;
 import com.api.api.service.IUsuarioService;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @NoArgsConstructor
 @RestController
@@ -40,13 +42,17 @@ public class UsuarioController {
     }
     //INICIO SESION requestParam es para que los variables suban automaticamente a la sentencia
     //  -->  /login?email=dato&password=dato
+    //@PostMapping("/login")
+    //public Usuario findByEmail(@RequestParam String email,@RequestParam String password){
+      //  return usuarioService.findByEmailAndPassword(email,password);
+    //}
     @PostMapping("/login")
-    public Usuario findByEmail(@RequestParam String email,@RequestParam String password){
-        return usuarioService.findByEmailAndPassword(email,password);
-    }
-    @GetMapping("/login/{email}")
-    public Usuario findByEmail(@PathVariable String email){
-        return usuarioService.findByEmail(email);
+    public ResponseEntity<String> findByEmail(@RequestBody Usuario usuario){
+        Optional<Usuario> userOptional=usuarioService.findByEmail(usuario.getEmail());
+        if(userOptional.isPresent())
+            return ResponseEntity.ok("Inicio de sesion exitoso");
+        else
+            return ResponseEntity.status(401).body("Credenciales inválidas");
     }
 
 }
