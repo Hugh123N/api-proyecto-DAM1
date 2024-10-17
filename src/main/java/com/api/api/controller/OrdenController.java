@@ -1,5 +1,6 @@
 package com.api.api.controller;
 
+import com.api.api.dto.DetalleOrdenDTO;
 import com.api.api.model.DetalleOrden;
 import com.api.api.model.Orden;
 import com.api.api.service.IDetalleService;
@@ -35,7 +36,7 @@ public class OrdenController {
         return detalleService.findAll();
     }
     @PostMapping("detalle")
-    public DetalleOrden saveDetalle(DetalleOrden detalle){
+    public DetalleOrden saveDetalle(@RequestBody DetalleOrdenDTO detalle){
         return detalleService.save(detalle);
     }
 
