@@ -35,6 +35,7 @@ public class OrdenController {
     public List<DetalleOrden> findAllDetalles(){
         return detalleService.findAll();
     }
+
     @PostMapping("/detalle")
     public DetalleOrden saveDetalle(@RequestBody DetalleOrdenDTO detalle){
         return detalleService.save(detalle);

@@ -36,10 +36,11 @@ public class DetalleServiceImpl implements IDetalleService {
 
     @Override
     public DetalleOrden save(DetalleOrdenDTO detalleOrdenDTO) {
-        Orden orden = ordenRepository.findById(detalleOrdenDTO.getOrdenId()).get();
-        Producto producto=productoRepository.findById(detalleOrdenDTO.getProductoId()).get();
+        Orden orden = ordenRepository.findById(detalleOrdenDTO.getOrden()).get();
+        Producto producto=productoRepository.findById(detalleOrdenDTO.getProducto()).get();
 
         DetalleOrden detalleOrden=new DetalleOrden();
+
         detalleOrden.setNombre(detalleOrdenDTO.getNombre());
         detalleOrden.setCantidad(detalleOrdenDTO.getCantidad());
         detalleOrden.setPrecio(detalleOrdenDTO.getPrecio());

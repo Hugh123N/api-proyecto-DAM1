@@ -10,7 +10,7 @@ public class DetalleOrdenDTO {
     private int cantidad;
     private double precio;
     private double total;
-    private Integer ordenId;  // ID de la orden en lugar del objeto completo
-    private Integer productoId;  // ID de la producto en lugar del objeto completo
+    private Integer orden;  // ID de la orden en lugar del objeto completo
+    private Integer producto;  // ID de la producto en lugar del objeto completo
 
 }
