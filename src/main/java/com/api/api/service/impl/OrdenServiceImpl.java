@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.module.ResolutionException;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +32,8 @@ public class OrdenServiceImpl implements IOrdenService {
 
     @Override
     public Orden save(Orden orden) {
+        Date fechaActual=new Date();
+        orden.setFechaCreacion(fechaActual);
         return ordenRepository.save(orden);
     }
 }
